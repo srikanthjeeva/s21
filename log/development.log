@@ -40,3 +40,34 @@ Migrating to CreateProducts (20120911085716)
   [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mAREL (0.2ms)[0m  INSERT INTO `products` (`title`, `description`, `image_url`, `price`, `created_at`, `updated_at`) VALUES ('Dal', '<p>\nThis is Dhal\n</p>', '/images/Dal.jpg', 49.5, '2012-09-11 09:09:02', '2012-09-11 09:09:02')
   [1m[36mSQL (56.6ms)[0m  [1mCOMMIT[0m
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateProducts (20120911085716)
+Migrating to CreateCarts (20120911094424)
+  [1m[35mSQL (203.9ms)[0m  CREATE TABLE `carts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (49.0ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120911094424')[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `carts`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `carts`
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `products`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `products`
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateProducts (20120911085716)
+Migrating to CreateCarts (20120911094424)
+Migrating to CreateLineItems (20120911094523)
+  [1m[35mSQL (140.7ms)[0m  CREATE TABLE `line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `product_id` int(11), `cart_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (40.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120911094523')[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `carts`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `carts`
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `line_items`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `line_items`
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `products`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `products`
