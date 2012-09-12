@@ -723,3 +723,163 @@ Started GET "/products" for 127.0.0.1 at 2012-09-12 09:48:38 +0530
   [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` ORDER BY title[0m
 Rendered products/index.html.erb within layouts/application (12.2ms)
 Completed 200 OK in 32ms (Views: 25.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2012-09-12 09:50:14 +0530
+  Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` ORDER BY title
+Rendered products/index.html.erb within layouts/application (44.7ms)
+Completed 200 OK in 55ms (Views: 47.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2012-09-12 09:50:47 +0530
+  Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT `products`.* FROM `products` ORDER BY title[0m
+Rendered products/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 23ms (Views: 14.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2012-09-12 09:50:48 +0530
+  Processing by OrdersController#index as HTML
+  [1m[35mOrder Load (0.1ms)[0m  SELECT `orders`.* FROM `orders` ORDER BY created_at desc LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM `orders`[0m
+Rendered orders/index.html.erb within layouts/application (22.7ms)
+Completed 200 OK in 30ms (Views: 25.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/contact" for 127.0.0.1 at 2012-09-12 09:50:49 +0530
+
+ActionController::RoutingError (No route matches "/contact"):
+  
+
+Rendered /home/srikanth/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-12 09:51:35 +0530
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` ORDER BY title
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 4)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (7.9ms)
+Rendered carts/_cart.html.erb (11.6ms)
+Rendered store/index.html.erb within layouts/application (30.9ms)
+Completed 200 OK in 44ms (Views: 33.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2012-09-12 09:51:38 +0530
+  Processing by OrdersController#new as HTML
+  [1m[35mCart Load (0.0ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+Rendered orders/_form.html.erb (7.7ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 4)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (14.9ms)
+Rendered carts/_cart.html.erb (22.2ms)
+Rendered orders/new.html.erb within layouts/application (35.0ms)
+Completed 200 OK in 55ms (Views: 37.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/orders" for 127.0.0.1 at 2012-09-12 09:52:06 +0530
+  Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "order"=>{"name"=>"Srikanth ", "address"=>"fgd dfg\r\ndg df\r\ngd \r\ng dfg", "email"=>"sri.jjerh@gmail.com", "pay_type"=>"Credit card"}, "commit"=>"Place Order"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `orders`[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Srikanth ', 'fgd dfg\r\ndg df\r\ngd \r\ng dfg', 'sri.jjerh@gmail.com', 'Credit card', '2012-09-12 04:22:07', '2012-09-12 04:22:07')
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `line_items` SET `cart_id` = NULL, `order_id` = 101, `updated_at` = '2012-09-12 04:22:07' WHERE `line_items`.`id` = 9[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `line_items` SET `cart_id` = NULL, `order_id` = 101, `updated_at` = '2012-09-12 04:22:07' WHERE `line_items`.`id` = 10
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `line_items` SET `cart_id` = NULL, `order_id` = 101, `updated_at` = '2012-09-12 04:22:07' WHERE `line_items`.`id` = 11[0m
+  [1m[35mSQL (113.4ms)[0m  COMMIT
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mAREL (0.1ms)[0m  DELETE FROM `carts` WHERE `carts`.`id` = 4
+  [1m[36mSQL (112.7ms)[0m  [1mCOMMIT[0m
+Rendered notifier/order_received.text.erb (15.7ms)
+Completed 500 Internal Server Error in 2008ms
+
+ActionView::Template::Error (Missing partial line_items/line_item with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:text], :locale=>[:en]} in view paths "/home/srikanth/projects/s21/app/views"):
+    1: Dear <%= @order.name %>
+    2: Thank you for your recent order from The Pragmatic Store.
+    3: You ordered the following items:
+    4: <%= render @order.line_items %>
+    5: We'll send you a separate e-mail when your order ships.
+  app/views/notifier/order_received.text.erb:4:in `_app_views_notifier_order_received_text_erb___521323285055296402_32864820__981126264748208491'
+  app/mailers/notifier.rb:12:in `order_received'
+  app/controllers/orders_controller.rb:56:in `block in create'
+  app/controllers/orders_controller.rb:52:in `create'
+
+Rendered /home/srikanth/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /home/srikanth/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (34.1ms)
+Rendered /home/srikanth/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.11/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (38.2ms)
+
+
+Started POST "/orders" for 127.0.0.1 at 2012-09-12 09:52:46 +0530
+  Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "order"=>{"name"=>"Srikanth ", "address"=>"fgd dfg\r\ndg df\r\ngd \r\ng dfg", "email"=>"sri.jjerh@gmail.com", "pay_type"=>"Credit card"}, "commit"=>"Place Order"}
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  describe `carts`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `carts` (`created_at`, `updated_at`) VALUES ('2012-09-12 04:22:46', '2012-09-12 04:22:46')[0m
+  [1m[35mSQL (58.9ms)[0m  COMMIT
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 5)[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `orders`[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Srikanth ', 'fgd dfg\r\ndg df\r\ngd \r\ng dfg', 'sri.jjerh@gmail.com', 'Credit card', '2012-09-12 04:22:46', '2012-09-12 04:22:46')
+  [1m[36mSQL (40.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 5)
+  [1m[36mAREL (0.1ms)[0m  [1mDELETE FROM `carts` WHERE `carts`.`id` = 5[0m
+  [1m[35mSQL (39.8ms)[0m  COMMIT
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE (`line_items`.order_id = 102)[0m
+Rendered collection (0.0ms)
+Rendered notifier/order_received.text.erb (2.0ms)
+
+Sent mail to sri.jjerh@gmail.com (44ms)
+Date: Wed, 12 Sep 2012 09:52:46 +0530
+From: S21 <no-reply@s21.com>
+To: sri.jjerh@gmail.com
+Message-ID: <50500e166e696_e941f7b6b469773@btp8sa42.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Dear Srikanth 
+Thank you for your recent order from The Pragmatic Store.
+You ordered the following items:
+
+We'll send you a separate e-mail when your order ships.
+Redirected to http://localhost:3001/
+Completed 302 Found in 305ms
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-12 09:52:46 +0530
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` ORDER BY title
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  describe `carts`
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `carts` (`created_at`, `updated_at`) VALUES ('2012-09-12 04:22:46', '2012-09-12 04:22:46')[0m
+  [1m[35mSQL (56.2ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 6)[0m
+Rendered carts/_cart.html.erb (0.5ms)
+Rendered store/index.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 127ms (Views: 21.5ms | ActiveRecord: 198.5ms)
