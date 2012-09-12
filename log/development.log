@@ -89,3 +89,637 @@ Migrating to AddQuantityToLineItem (20120911095451)
   [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `line_items`
   [1m[36mSQL (0.3ms)[0m  [1mdescribe `products`[0m
   [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `products`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/srikanth/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-12 09:21:28 +0530
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.5ms)[0m  [1mSELECT `products`.* FROM `products` ORDER BY title[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  describe `carts`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `carts` (`created_at`, `updated_at`) VALUES ('2012-09-12 03:51:29', '2012-09-12 03:51:29')[0m
+  [1m[35mSQL (51.4ms)[0m  COMMIT
+  [1m[36mLineItem Load (0.4ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 3)[0m
+Rendered collection (0.0ms)
+Rendered carts/_cart.html.erb (159.2ms)
+Rendered store/index.html.erb within layouts/application (281.8ms)
+Completed 200 OK in 567ms (Views: 301.8ms | ActiveRecord: 53.2ms)
+
+
+Started POST "/line_items?product_id=3" for 127.0.0.1 at 2012-09-12 09:22:08 +0530
+  Processing by LineItemsController#create as JS
+  Parameters: {"authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "product_id"=>"3"}
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 3 LIMIT 1
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`product_id` = 3 AND (`line_items`.cart_id = 3) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  describe `line_items`
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `line_items` (`product_id`, `cart_id`, `created_at`, `updated_at`, `quantity`) VALUES (3, 3, '2012-09-12 03:52:08', '2012-09-12 03:52:08', 1)[0m
+  [1m[35mSQL (51.6ms)[0m  COMMIT
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 3)[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (2.1ms)
+Rendered carts/_cart.html.erb (17.8ms)
+Rendered line_items/create.js.rjs (19.3ms)
+Completed 200 OK in 194ms (Views: 95.2ms | ActiveRecord: 53.1ms)
+
+
+Started POST "/line_items?product_id=2" for 127.0.0.1 at 2012-09-12 09:22:09 +0530
+  Processing by LineItemsController#create as JS
+  Parameters: {"authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "product_id"=>"2"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 3 LIMIT 1[0m
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`product_id` = 2 AND (`line_items`.cart_id = 3) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `line_items`[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `line_items` (`product_id`, `cart_id`, `created_at`, `updated_at`, `quantity`) VALUES (2, 3, '2012-09-12 03:52:09', '2012-09-12 03:52:09', 1)
+  [1m[36mSQL (70.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 3)
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (2.4ms)
+Rendered carts/_cart.html.erb (5.9ms)
+Rendered line_items/create.js.rjs (7.7ms)
+Completed 200 OK in 114ms (Views: 13.9ms | ActiveRecord: 71.5ms)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2012-09-12 09:22:11 +0530
+  Processing by LineItemsController#create as JS
+  Parameters: {"authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "product_id"=>"1"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 3 LIMIT 1[0m
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`product_id` = 1 AND (`line_items`.cart_id = 3) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `line_items`[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `line_items` (`product_id`, `cart_id`, `created_at`, `updated_at`, `quantity`) VALUES (1, 3, '2012-09-12 03:52:11', '2012-09-12 03:52:11', 1)
+  [1m[36mSQL (64.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 3)
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (4.8ms)
+Rendered carts/_cart.html.erb (9.5ms)
+Rendered line_items/create.js.rjs (11.3ms)
+Completed 200 OK in 109ms (Views: 15.1ms | ActiveRecord: 66.2ms)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2012-09-12 09:22:11 +0530
+  Processing by LineItemsController#create as JS
+  Parameters: {"authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "product_id"=>"1"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 3 LIMIT 1
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`product_id` = 1 AND (`line_items`.cart_id = 3) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `line_items` SET `quantity` = 2, `updated_at` = '2012-09-12 03:52:11' WHERE `line_items`.`id` = 8
+  [1m[36mSQL (61.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 3)
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (3.0ms)
+Rendered carts/_cart.html.erb (6.0ms)
+Rendered line_items/create.js.rjs (7.2ms)
+Completed 200 OK in 133ms (Views: 11.2ms | ActiveRecord: 62.8ms)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2012-09-12 09:22:12 +0530
+  Processing by LineItemsController#create as JS
+  Parameters: {"authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "product_id"=>"1"}
+  [1m[35mCart Load (0.1ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 3 LIMIT 1
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`product_id` = 1 AND (`line_items`.cart_id = 3) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `line_items` SET `quantity` = 3, `updated_at` = '2012-09-12 03:52:12' WHERE `line_items`.`id` = 8
+  [1m[36mSQL (57.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 3)
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (3.0ms)
+Rendered carts/_cart.html.erb (6.0ms)
+Rendered line_items/create.js.rjs (7.2ms)
+Completed 200 OK in 98ms (Views: 11.5ms | ActiveRecord: 58.4ms)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2012-09-12 09:22:14 +0530
+  Processing by LineItemsController#create as JS
+  Parameters: {"authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "product_id"=>"1"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 3 LIMIT 1
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`product_id` = 1 AND (`line_items`.cart_id = 3) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `line_items` SET `quantity` = 4, `updated_at` = '2012-09-12 03:52:14' WHERE `line_items`.`id` = 8
+  [1m[36mSQL (68.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 3)
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (4.8ms)
+Rendered carts/_cart.html.erb (9.5ms)
+Rendered line_items/create.js.rjs (11.5ms)
+Completed 200 OK in 147ms (Views: 18.5ms | ActiveRecord: 69.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-12 09:28:36 +0530
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` ORDER BY title
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 3 LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 3)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 3)[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 3)
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (4.1ms)
+Rendered carts/_cart.html.erb (11.0ms)
+Rendered store/index.html.erb within layouts/application (60.3ms)
+Completed 200 OK in 74ms (Views: 62.3ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/carts/3" for 127.0.0.1 at 2012-09-12 09:28:39 +0530
+  Processing by CartsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "id"=>"3"}
+  [1m[35mCart Load (0.1ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 3 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 3)
+  [1m[36mAREL (0.1ms)[0m  [1mDELETE FROM `line_items` WHERE `line_items`.`id` = 6[0m
+  [1m[35mAREL (0.1ms)[0m  DELETE FROM `line_items` WHERE `line_items`.`id` = 7
+  [1m[36mAREL (0.1ms)[0m  [1mDELETE FROM `line_items` WHERE `line_items`.`id` = 8[0m
+  [1m[35mAREL (0.1ms)[0m  DELETE FROM `carts` WHERE `carts`.`id` = 3
+  [1m[36mSQL (59.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3001/
+Completed 302 Found in 82ms
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-12 09:28:39 +0530
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` ORDER BY title
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  describe `carts`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `carts` (`created_at`, `updated_at`) VALUES ('2012-09-12 03:58:39', '2012-09-12 03:58:39')[0m
+  [1m[35mSQL (59.5ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+Rendered carts/_cart.html.erb (0.4ms)
+Rendered store/index.html.erb within layouts/application (17.4ms)
+Completed 200 OK in 133ms (Views: 21.6ms | ActiveRecord: 120.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-12 09:28:41 +0530
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` ORDER BY title
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)
+Rendered carts/_cart.html.erb (0.5ms)
+Rendered store/index.html.erb within layouts/application (48.1ms)
+Completed 200 OK in 63ms (Views: 50.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/line_items?product_id=3" for 127.0.0.1 at 2012-09-12 09:28:42 +0530
+  Processing by LineItemsController#create as JS
+  Parameters: {"authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "product_id"=>"3"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`product_id` = 3 AND (`line_items`.cart_id = 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `line_items`[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `line_items` (`product_id`, `cart_id`, `created_at`, `updated_at`, `quantity`) VALUES (3, 4, '2012-09-12 03:58:42', '2012-09-12 03:58:42', 1)
+  [1m[36mSQL (56.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (1.8ms)
+Rendered carts/_cart.html.erb (5.6ms)
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+Rendered line_items/create.js.rjs (7.7ms)
+Completed 200 OK in 100ms (Views: 13.6ms | ActiveRecord: 58.0ms)
+
+
+Started POST "/line_items?product_id=2" for 127.0.0.1 at 2012-09-12 09:28:45 +0530
+  Processing by LineItemsController#create as JS
+  Parameters: {"authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "product_id"=>"2"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`product_id` = 2 AND (`line_items`.cart_id = 4) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  describe `line_items`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `line_items` (`product_id`, `cart_id`, `created_at`, `updated_at`, `quantity`) VALUES (2, 4, '2012-09-12 03:58:45', '2012-09-12 03:58:45', 1)[0m
+  [1m[35mSQL (56.8ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 4)
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (2.4ms)
+Rendered carts/_cart.html.erb (6.3ms)
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+Rendered line_items/create.js.rjs (8.4ms)
+Completed 200 OK in 104ms (Views: 12.0ms | ActiveRecord: 58.9ms)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2012-09-12 09:28:47 +0530
+  Processing by LineItemsController#create as JS
+  Parameters: {"authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "product_id"=>"1"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`product_id` = 1 AND (`line_items`.cart_id = 4) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  describe `line_items`
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `line_items` (`product_id`, `cart_id`, `created_at`, `updated_at`, `quantity`) VALUES (1, 4, '2012-09-12 03:58:47', '2012-09-12 03:58:47', 1)[0m
+  [1m[35mSQL (40.1ms)[0m  COMMIT
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 4)
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (4.2ms)
+Rendered carts/_cart.html.erb (9.5ms)
+  [1m[35mSQL (0.2ms)[0m  SELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE (`line_items`.cart_id = 4)
+Rendered line_items/create.js.rjs (12.0ms)
+Completed 200 OK in 117ms (Views: 17.7ms | ActiveRecord: 41.8ms)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2012-09-12 09:28:51 +0530
+  Processing by LineItemsController#create as JS
+  Parameters: {"authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "product_id"=>"1"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`product_id` = 1 AND (`line_items`.cart_id = 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `line_items` SET `quantity` = 2, `updated_at` = '2012-09-12 03:58:51' WHERE `line_items`.`id` = 11[0m
+  [1m[35mSQL (55.9ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 4)
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (3.1ms)
+Rendered carts/_cart.html.erb (6.6ms)
+  [1m[35mSQL (0.2ms)[0m  SELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE (`line_items`.cart_id = 4)
+Rendered line_items/create.js.rjs (8.7ms)
+Completed 200 OK in 99ms (Views: 12.6ms | ActiveRecord: 57.2ms)
+
+
+Started POST "/line_items?product_id=1" for 127.0.0.1 at 2012-09-12 09:28:51 +0530
+  Processing by LineItemsController#create as JS
+  Parameters: {"authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "product_id"=>"1"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`product_id` = 1 AND (`line_items`.cart_id = 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `line_items` SET `quantity` = 3, `updated_at` = '2012-09-12 03:58:52' WHERE `line_items`.`id` = 11[0m
+  [1m[35mSQL (52.6ms)[0m  COMMIT
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 4)
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (3.3ms)
+Rendered carts/_cart.html.erb (7.5ms)
+  [1m[35mSQL (0.2ms)[0m  SELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE (`line_items`.cart_id = 4)
+Rendered line_items/create.js.rjs (9.7ms)
+Completed 200 OK in 95ms (Views: 13.6ms | ActiveRecord: 54.0ms)
+
+
+Started POST "/line_items?product_id=2" for 127.0.0.1 at 2012-09-12 09:28:53 +0530
+  Processing by LineItemsController#create as JS
+  Parameters: {"authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "product_id"=>"2"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`product_id` = 2 AND (`line_items`.cart_id = 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `line_items` SET `quantity` = 2, `updated_at` = '2012-09-12 03:58:53' WHERE `line_items`.`id` = 10[0m
+  [1m[35mSQL (53.2ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 4)
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (3.0ms)
+Rendered carts/_cart.html.erb (6.5ms)
+  [1m[35mSQL (0.2ms)[0m  SELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE (`line_items`.cart_id = 4)
+Rendered line_items/create.js.rjs (8.6ms)
+Completed 200 OK in 126ms (Views: 13.0ms | ActiveRecord: 54.5ms)
+
+
+Started POST "/line_items?product_id=3" for 127.0.0.1 at 2012-09-12 09:28:54 +0530
+  Processing by LineItemsController#create as JS
+  Parameters: {"authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "product_id"=>"3"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`product_id` = 3 AND (`line_items`.cart_id = 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE `line_items` SET `quantity` = 2, `updated_at` = '2012-09-12 03:58:54' WHERE `line_items`.`id` = 9[0m
+  [1m[35mSQL (51.2ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 4)
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (3.0ms)
+Rendered carts/_cart.html.erb (6.7ms)
+  [1m[35mSQL (0.2ms)[0m  SELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE (`line_items`.cart_id = 4)
+Rendered line_items/create.js.rjs (8.9ms)
+Completed 200 OK in 96ms (Views: 12.8ms | ActiveRecord: 52.7ms)
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateProducts (20120911085716)
+Migrating to CreateCarts (20120911094424)
+Migrating to CreateLineItems (20120911094523)
+Migrating to AddQuantityToLineItem (20120911095451)
+Migrating to CreateOrders (20120912035941)
+  [1m[35mSQL (146.9ms)[0m  CREATE TABLE `orders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `address` text, `email` varchar(255), `pay_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (40.9ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120912035941')[0m
+Migrating to AddOrderIdToLineItem (20120912035957)
+  [1m[35mSQL (266.0ms)[0m  ALTER TABLE `line_items` ADD `order_id` int(11)
+  [1m[36mSQL (40.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120912035957')[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mdescribe `carts`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `carts`
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `line_items`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `line_items`
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `orders`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `orders`
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `products`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `products`
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2012-09-12 09:32:34 +0530
+  Processing by OrdersController#new as HTML
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)
+Rendered orders/_form.html.erb (7.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (44.1ms)
+Rendered carts/_cart.html.erb (51.7ms)
+Rendered orders/new.html.erb within layouts/application (63.8ms)
+Completed 200 OK in 81ms (Views: 65.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2012-09-12 09:34:00 +0530
+  Processing by OrdersController#new as HTML
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)
+Rendered orders/_form.html.erb (7.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (48.3ms)
+Rendered carts/_cart.html.erb (51.6ms)
+Rendered orders/new.html.erb within layouts/application (63.9ms)
+Completed 200 OK in 84ms (Views: 66.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/orders" for 127.0.0.1 at 2012-09-12 09:34:01 +0530
+  Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "order"=>{"name"=>"", "address"=>"", "email"=>"", "pay_type"=>""}, "commit"=>"Place Order"}
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 4)
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+Rendered orders/_form.html.erb (9.2ms)
+Rendered orders/new.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 88ms (Views: 15.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/orders" for 127.0.0.1 at 2012-09-12 09:34:18 +0530
+  Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GH51WREx+4XaXIPR3ZxIx37N9lPDtwBNPkEuxwBQokU=", "order"=>{"name"=>"", "address"=>"", "email"=>"", "pay_type"=>"Credit card"}, "commit"=>"Place Order"}
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 4)
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+Rendered orders/_form.html.erb (7.0ms)
+Rendered orders/new.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 81ms (Views: 12.9ms | ActiveRecord: 0.4ms)
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `orders`[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 1', ' 1 Main Street', 'customer- 1@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 2', ' 2 Main Street', 'customer- 2@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 3', ' 3 Main Street', 'customer- 3@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 4', ' 4 Main Street', 'customer- 4@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 5', ' 5 Main Street', 'customer- 5@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 6', ' 6 Main Street', 'customer- 6@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 7', ' 7 Main Street', 'customer- 7@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 8', ' 8 Main Street', 'customer- 8@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 9', ' 9 Main Street', 'customer- 9@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 10', ' 10 Main Street', 'customer- 10@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 11', ' 11 Main Street', 'customer- 11@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 12', ' 12 Main Street', 'customer- 12@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 13', ' 13 Main Street', 'customer- 13@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 14', ' 14 Main Street', 'customer- 14@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 15', ' 15 Main Street', 'customer- 15@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 16', ' 16 Main Street', 'customer- 16@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 17', ' 17 Main Street', 'customer- 17@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 18', ' 18 Main Street', 'customer- 18@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 19', ' 19 Main Street', 'customer- 19@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 20', ' 20 Main Street', 'customer- 20@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 21', ' 21 Main Street', 'customer- 21@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 22', ' 22 Main Street', 'customer- 22@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 23', ' 23 Main Street', 'customer- 23@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 24', ' 24 Main Street', 'customer- 24@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 25', ' 25 Main Street', 'customer- 25@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 26', ' 26 Main Street', 'customer- 26@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 27', ' 27 Main Street', 'customer- 27@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 28', ' 28 Main Street', 'customer- 28@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 29', ' 29 Main Street', 'customer- 29@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 30', ' 30 Main Street', 'customer- 30@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 31', ' 31 Main Street', 'customer- 31@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 32', ' 32 Main Street', 'customer- 32@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 33', ' 33 Main Street', 'customer- 33@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 34', ' 34 Main Street', 'customer- 34@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 35', ' 35 Main Street', 'customer- 35@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 36', ' 36 Main Street', 'customer- 36@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 37', ' 37 Main Street', 'customer- 37@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 38', ' 38 Main Street', 'customer- 38@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 39', ' 39 Main Street', 'customer- 39@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 40', ' 40 Main Street', 'customer- 40@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 41', ' 41 Main Street', 'customer- 41@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 42', ' 42 Main Street', 'customer- 42@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 43', ' 43 Main Street', 'customer- 43@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 44', ' 44 Main Street', 'customer- 44@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 45', ' 45 Main Street', 'customer- 45@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 46', ' 46 Main Street', 'customer- 46@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 47', ' 47 Main Street', 'customer- 47@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 48', ' 48 Main Street', 'customer- 48@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 49', ' 49 Main Street', 'customer- 49@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 50', ' 50 Main Street', 'customer- 50@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 51', ' 51 Main Street', 'customer- 51@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 52', ' 52 Main Street', 'customer- 52@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 53', ' 53 Main Street', 'customer- 53@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 54', ' 54 Main Street', 'customer- 54@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 55', ' 55 Main Street', 'customer- 55@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 56', ' 56 Main Street', 'customer- 56@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 57', ' 57 Main Street', 'customer- 57@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 58', ' 58 Main Street', 'customer- 58@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 59', ' 59 Main Street', 'customer- 59@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 60', ' 60 Main Street', 'customer- 60@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 61', ' 61 Main Street', 'customer- 61@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 62', ' 62 Main Street', 'customer- 62@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 63', ' 63 Main Street', 'customer- 63@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 64', ' 64 Main Street', 'customer- 64@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 65', ' 65 Main Street', 'customer- 65@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 66', ' 66 Main Street', 'customer- 66@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 67', ' 67 Main Street', 'customer- 67@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 68', ' 68 Main Street', 'customer- 68@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 69', ' 69 Main Street', 'customer- 69@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 70', ' 70 Main Street', 'customer- 70@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 71', ' 71 Main Street', 'customer- 71@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 72', ' 72 Main Street', 'customer- 72@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 73', ' 73 Main Street', 'customer- 73@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 74', ' 74 Main Street', 'customer- 74@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 75', ' 75 Main Street', 'customer- 75@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 76', ' 76 Main Street', 'customer- 76@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 77', ' 77 Main Street', 'customer- 77@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 78', ' 78 Main Street', 'customer- 78@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 79', ' 79 Main Street', 'customer- 79@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 80', ' 80 Main Street', 'customer- 80@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 81', ' 81 Main Street', 'customer- 81@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 82', ' 82 Main Street', 'customer- 82@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 83', ' 83 Main Street', 'customer- 83@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 84', ' 84 Main Street', 'customer- 84@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 85', ' 85 Main Street', 'customer- 85@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 86', ' 86 Main Street', 'customer- 86@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 87', ' 87 Main Street', 'customer- 87@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 88', ' 88 Main Street', 'customer- 88@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 89', ' 89 Main Street', 'customer- 89@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 90', ' 90 Main Street', 'customer- 90@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 91', ' 91 Main Street', 'customer- 91@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 92', ' 92 Main Street', 'customer- 92@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 93', ' 93 Main Street', 'customer- 93@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 94', ' 94 Main Street', 'customer- 94@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 95', ' 95 Main Street', 'customer- 95@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 96', ' 96 Main Street', 'customer- 96@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 97', ' 97 Main Street', 'customer- 97@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 98', ' 98 Main Street', 'customer- 98@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 99', ' 99 Main Street', 'customer- 99@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `orders` (`name`, `address`, `email`, `pay_type`, `created_at`, `updated_at`) VALUES ('Customer 100', ' 100 Main Street', 'customer- 100@example.com', 'Check', '2012-09-12 04:09:39', '2012-09-12 04:09:39')[0m
+  [1m[35mSQL (58.1ms)[0m  COMMIT
+
+
+Started GET "/orders" for 127.0.0.1 at 2012-09-12 09:39:44 +0530
+  Processing by OrdersController#index as HTML
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+Completed 500 Internal Server Error in 5ms
+
+NoMethodError (undefined method `paginate' for #<Class:0x000000049cc030>):
+  app/controllers/orders_controller.rb:5:in `index'
+
+Rendered /home/srikanth/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/srikanth/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+Rendered /home/srikanth/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.8ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/srikanth/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/orders" for 127.0.0.1 at 2012-09-12 09:39:55 +0530
+  Processing by OrdersController#index as HTML
+  [1m[36mOrder Load (0.4ms)[0m  [1mSELECT `orders`.* FROM `orders` ORDER BY created_at desc LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) FROM `orders`
+Rendered orders/index.html.erb within layouts/application (99.5ms)
+Completed 200 OK in 110ms (Views: 101.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/orders?page=2" for 127.0.0.1 at 2012-09-12 09:39:59 +0530
+  Processing by OrdersController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mOrder Load (0.4ms)[0m  [1mSELECT `orders`.* FROM `orders` ORDER BY created_at desc LIMIT 15 OFFSET 15[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM `orders`
+Rendered orders/index.html.erb within layouts/application (23.0ms)
+Completed 200 OK in 30ms (Views: 25.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/orders?page=4" for 127.0.0.1 at 2012-09-12 09:40:03 +0530
+  Processing by OrdersController#index as HTML
+  Parameters: {"page"=>"4"}
+  [1m[36mOrder Load (0.5ms)[0m  [1mSELECT `orders`.* FROM `orders` ORDER BY created_at desc LIMIT 15 OFFSET 45[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM `orders`
+Rendered orders/index.html.erb within layouts/application (61.1ms)
+Completed 200 OK in 68ms (Views: 63.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/orders?page=6" for 127.0.0.1 at 2012-09-12 09:40:04 +0530
+  Processing by OrdersController#index as HTML
+  Parameters: {"page"=>"6"}
+  [1m[36mOrder Load (0.6ms)[0m  [1mSELECT `orders`.* FROM `orders` ORDER BY created_at desc LIMIT 15 OFFSET 75[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `orders`
+Rendered orders/index.html.erb within layouts/application (23.4ms)
+Completed 200 OK in 30ms (Views: 25.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/orders?page=7" for 127.0.0.1 at 2012-09-12 09:40:05 +0530
+  Processing by OrdersController#index as HTML
+  Parameters: {"page"=>"7"}
+  [1m[36mOrder Load (0.6ms)[0m  [1mSELECT `orders`.* FROM `orders` ORDER BY created_at desc LIMIT 15 OFFSET 90[0m
+Rendered orders/index.html.erb within layouts/application (18.4ms)
+Completed 200 OK in 26ms (Views: 20.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-12 09:41:12 +0530
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (1.1ms)[0m  SELECT `products`.* FROM `products` ORDER BY title
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (3.9ms)
+Rendered carts/_cart.html.erb (11.7ms)
+Rendered store/index.html.erb within layouts/application (103.1ms)
+Completed 200 OK in 185ms (Views: 105.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-12 09:48:29 +0530
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` ORDER BY title[0m
+  [1m[35mCart Load (0.1ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 4 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 4)
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 4)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (7.7ms)
+Rendered carts/_cart.html.erb (11.0ms)
+Rendered store/index.html.erb within layouts/application (61.0ms)
+Completed 200 OK in 75ms (Views: 63.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/orders/" for 127.0.0.1 at 2012-09-12 09:48:34 +0530
+  Processing by OrdersController#index as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT `orders`.* FROM `orders` ORDER BY created_at desc LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `orders`
+Rendered orders/index.html.erb within layouts/application (23.9ms)
+Completed 200 OK in 32ms (Views: 26.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2012-09-12 09:48:38 +0530
+  Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` ORDER BY title[0m
+Rendered products/index.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 32ms (Views: 25.1ms | ActiveRecord: 0.1ms)
