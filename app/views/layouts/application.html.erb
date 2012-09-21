@@ -20,6 +20,14 @@
       .sidebar-nav {
         padding: 9px 0;
       }
+      .cart_list{
+        margin-left: 15px;
+        font-size: 15px !important;
+      }
+      .cart_list td{
+        font-size: 15px !important;
+        line-height: 29px !important;
+      }
     </style>
     <link href="/files/css/bootstrap-responsive.css" rel="stylesheet" />
 
@@ -37,7 +45,7 @@
         <div class="container-fluid">
           <a class="brand" href="#">S21</a>
           <p class="navbar-text pull-right">
-            Customer Support : +91 98-86-955621
+            Phone Order / Customer Support : +91 98-86-955621
           </p>
         </div>
       </div>
@@ -48,28 +56,29 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li class="active"><a href="/">Store</a></li>
-              <li><a href="/products">Products</a></li>
-              <li><a href="/orders">Orders</a></li>
-              <li><a href="/contact">Contact</a></li>
+              <li class="nav-header">List</li>
+              <li class="<%= 'active' if controller.controller_name == 'store' %>"><a href="/">Store</a></li>
+              <li class="<%= 'active' if controller.controller_name == 'products' %>"><a href="/products">Products</a></li>
+              <li class="<%= 'active' if controller.controller_name == 'orders' %>"><a href="/orders">Orders</a></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span7">
           <%= yield %>
         </div><!--/span-->
-        <div class="span2">
-          <div class="well sidebar-nav" style="position:fixed; ">
-            <div id="cart" >
-              <% if @cart %>
-                <%= hidden_div_if(@cart.line_items.empty?, :id => "cart" ) do %>
-                  <%= render @cart %>
+        <% unless controller.controller_name == "orders" || controller.controller_name == "products"  %>
+          <div class="span2">
+            <div class="well sidebar-nav">
+              <div id="cart" class="cart_list">
+                <% if @cart %>
+                  <%= hidden_div_if(@cart.line_items.empty?, :id => "cart" ) do %>
+                    <%= render @cart %>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </div>
-          </div><!--/.well -->
-        </div><!--/span-->
+              </div>
+            </div><!--/.well -->
+          </div><!--/span-->
+        <% end %>
       </div><!--/row-->
 
       <hr />

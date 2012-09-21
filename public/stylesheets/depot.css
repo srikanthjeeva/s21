@@ -197,3 +197,59 @@
 .depot_form div {
     margin: 0.5em 0;
 }
+
+
+.pagination {
+    padding:0.3em;
+    text-align:right;
+}
+.pagination a, .pagination span {
+    padding:0.2em 0.5em;
+}
+.pagination span.disabled {
+    color:#AAAAAA;
+}
+.pagination span.current {
+    color:#8FBF5D;
+    font-weight:bold;
+}
+.pagination a {
+    border:1px solid #DDDDDD;
+    color:#0063DC;
+    text-decoration:none;
+}
+.pagination a:hover, .pagination a:focus {
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    background:#0063DC none repeat scroll 0 0;
+    border-color:#003366;
+    color:white;
+}
+.pagination .page_info {
+    color:#AAAAAA;
+    padding-top:0.8em;
+}
+.pagination .prev_page, .pagination .next_page {
+    border-width:1px;
+}
+
+.h1_heading{
+    color: #222266;
+    font: 150% sans-serif;
+}
+
+.new_pr_link{
+    border: 1px solid #DDDDDD;
+    color: #0063DC;
+    text-decoration: none;
+    float: right;
+    padding: 0.2em 0.5em;
+}
+.new_pr_link a{color: #0063DC;}
+.new_pr_link a:hover, .new_pr_link a:focus {
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    border-color:#003366;
+}

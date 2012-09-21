@@ -1,28 +1,25 @@
 <div id="product_list" >
-  <h1>Listing products</h1>
-  <table>
-    <% @products.each do |product| %>
-      <tr class=" <%= cycle('list_line_odd' , 'list_line_even' ) %>" >
-        <td>
-          <%= image_tag(product.image_url, :class => 'list_image' ) %>
-        </td>
-        <td class="list_description" >
-          <dl>
-            <dt><%= product.title %></dt>
-            <dd><%= truncate(strip_tags(product.description),
-                :length => 80) %></dd>
-          </dl>
-        </td>
-        <td class="list_actions" >
-          <%= link_to 'Show' , product %><br/>
-          <%= link_to 'Edit' , edit_product_path(product) %><br/>
-          <%= link_to 'Destroy' , product,
-            :confirm => 'Are you sure?' ,
-            :method => :delete %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
+  <div>
+    <span class="h1_heading">Products</span>
+    <span class="new_pr_link">
+      <%= link_to 'New Product' , new_product_path %>
+    </span>
+  </div>
+  <% @products.each do |product| %>
+    <div class="entry" >
+      <%= image_tag(product.image_url) %>
+      <h3><%= product.title %></h3>
+      <%=sanitize product.description %>
+      <div class="price_line" >
+        <span class="price"><%= sprintf("Rs. %0.02f", product.price) %></span>
+        <%= link_to 'Show' , product %> |
+        <%= link_to 'Edit' , edit_product_path(product) %> |
+        <%= link_to 'Destroy' , product,
+          :confirm => 'Are you sure?' ,
+          :method => :delete %>
+      </div>
+    </div>
+  <% end %>
 </div>
 <br />
-<%= link_to 'New product' , new_product_path %>
+
