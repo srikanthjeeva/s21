@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  PAYMENT_TYPES = [ "Check" , "Credit card" , "Purchase order" ]
+  PAYMENT_TYPES = ["Online Payment" , "Swipe card on delivery" , "Cach on delivery" ]
 
   validates :name, :address, :email, :pay_type, :presence => true
   validates :pay_type, :inclusion => PAYMENT_TYPES

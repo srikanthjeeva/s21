@@ -11,7 +11,7 @@
     <th>Address</th>
     <th>Email</th>
     <th>Pay type</th>
-    <th></th>
+    <th>Status</th>
     <th></th>
     <th></th>
   </tr>
@@ -22,9 +22,9 @@
       <td><%= order.address %></td>
       <td><%= order.email %></td>
       <td><%= order.pay_type %></td>
+      <td></td>
       <td><%= link_to 'Show', order %></td>
       <td><%= link_to 'Edit', edit_order_path(order) %></td>
-      <td><%= link_to 'Destroy', order, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>

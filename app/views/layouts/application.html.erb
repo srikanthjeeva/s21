@@ -63,10 +63,10 @@
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
-        <div class="span7">
+        <div class="<%= controller.controller_name == 'orders' && controller.action_name == 'index' ? 'span9' : 'span6' %>">
           <%= yield %>
         </div><!--/span-->
-        <% unless controller.controller_name == "orders" || controller.controller_name == "products"  %>
+        <% unless (controller.controller_name == "orders" && controller.action_name != "new") || controller.controller_name == "products"  %>
           <div class="span2">
             <div class="well sidebar-nav">
               <div id="cart" class="cart_list">

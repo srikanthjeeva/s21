@@ -172,11 +172,11 @@
 }
 
 .depot_form fieldset {
-    background: #efe;
+    background: #eee;
 }
 .depot_form legend {
-    color: #dfd;
-    background: #141;
+    color: #eee;
+    background: #ccc;
     font-family: sans-serif;
     padding: 0.2em 1em;
 }
@@ -252,4 +252,7 @@
     -moz-background-inline-policy:continuous;
     -moz-background-origin:padding;
     border-color:#003366;
+}
+.depot_form{
+    width:400px
 }
