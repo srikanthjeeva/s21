@@ -5519,3 +5519,177 @@ Rendered line_items/_line_item.html.erb (9.3ms)
 Rendered carts/_cart.html.erb (12.8ms)
 Rendered store/index.html.erb within layouts/application (38.9ms)
 Completed 200 OK in 89ms (Views: 41.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2012-09-21 14:24:49 +0530
+  Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` ORDER BY title[0m
+Rendered products/index.html.erb within layouts/application (19.2ms)
+Completed 200 OK in 65ms (Views: 21.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-21 14:24:51 +0530
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` ORDER BY title
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 12 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 12)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 12)[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 12)
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (8.7ms)
+Rendered carts/_cart.html.erb (12.6ms)
+Rendered store/index.html.erb within layouts/application (75.6ms)
+Completed 200 OK in 93ms (Views: 77.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2012-09-21 14:24:52 +0530
+  Processing by OrdersController#index as HTML
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT `orders`.* FROM `orders` ORDER BY created_at desc LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM `orders`
+Rendered orders/index.html.erb within layouts/application (57.3ms)
+Completed 200 OK in 64ms (Views: 59.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2012-09-21 14:24:53 +0530
+  Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` ORDER BY title[0m
+Rendered products/index.html.erb within layouts/application (23.4ms)
+Completed 200 OK in 36ms (Views: 26.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-21 14:24:54 +0530
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` ORDER BY title
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 12 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 12)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 12)[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 12)
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (8.8ms)
+Rendered carts/_cart.html.erb (12.1ms)
+Rendered store/index.html.erb within layouts/application (37.5ms)
+Completed 200 OK in 54ms (Views: 39.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2012-09-21 14:24:55 +0530
+  Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` ORDER BY title[0m
+Rendered products/index.html.erb within layouts/application (19.1ms)
+Completed 200 OK in 30ms (Views: 21.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2012-09-21 14:24:56 +0530
+  Processing by OrdersController#index as HTML
+  [1m[35mOrder Load (0.1ms)[0m  SELECT `orders`.* FROM `orders` ORDER BY created_at desc LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `orders`[0m
+Rendered orders/index.html.erb within layouts/application (23.8ms)
+Completed 200 OK in 31ms (Views: 26.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2012-09-21 14:31:45 +0530
+  Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` ORDER BY title
+Rendered products/index.html.erb within layouts/application (53.7ms)
+Completed 200 OK in 65ms (Views: 56.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-21 14:31:47 +0530
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` ORDER BY title[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 12 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 12)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 12)
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 12)[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (8.4ms)
+Rendered carts/_cart.html.erb (11.8ms)
+Rendered store/index.html.erb within layouts/application (70.0ms)
+Completed 200 OK in 85ms (Views: 72.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2012-09-21 14:31:50 +0530
+  Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` ORDER BY title
+Rendered products/index.html.erb within layouts/application (54.2ms)
+Completed 200 OK in 67ms (Views: 57.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2012-09-21 14:31:57 +0530
+  Processing by ProductsController#new as HTML
+Rendered products/_form.html.erb (10.6ms)
+Rendered products/new.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 27ms (Views: 16.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2012-09-21 14:32:17 +0530
+  Processing by ProductsController#new as HTML
+Rendered products/_form.html.erb (11.2ms)
+Rendered products/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 29ms (Views: 18.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/products" for 127.0.0.1 at 2012-09-21 14:32:24 +0530
+  Processing by ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Nn8j2IO36DjtyDpeMOxRmn/X0M2YsarCGbtzoXLgC4o=", "product"=>{"title"=>"", "description"=>"", "price"=>""}, "commit"=>"Create Product"}
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT 1 FROM `products` WHERE (`products`.`title` = BINARY '') LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+Rendered products/_form.html.erb (9.0ms)
+Rendered products/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 89ms (Views: 16.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2012-09-21 14:32:27 +0530
+  Processing by OrdersController#index as HTML
+  [1m[35mOrder Load (0.1ms)[0m  SELECT `orders`.* FROM `orders` ORDER BY created_at desc LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `orders`[0m
+Rendered orders/index.html.erb within layouts/application (56.4ms)
+Completed 200 OK in 65ms (Views: 58.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2012-09-21 14:32:28 +0530
+  Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` ORDER BY title
+Rendered products/index.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 31ms (Views: 21.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2012-09-21 14:32:29 +0530
+  Processing by OrdersController#index as HTML
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT `orders`.* FROM `orders` ORDER BY created_at desc LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM `orders`
+Rendered orders/index.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 32ms (Views: 26.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2012-09-21 14:32:30 +0530
+  Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` ORDER BY title[0m
+Rendered products/index.html.erb within layouts/application (19.1ms)
+Completed 200 OK in 65ms (Views: 21.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-21 14:32:30 +0530
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` ORDER BY title
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 12 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 12)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `line_items` WHERE (`line_items`.cart_id = 12)[0m
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE (`line_items`.cart_id = 12)
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 1 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (9.0ms)
+Rendered carts/_cart.html.erb (13.0ms)
+Rendered store/index.html.erb within layouts/application (72.9ms)
+Completed 200 OK in 89ms (Views: 75.2ms | ActiveRecord: 0.5ms)
