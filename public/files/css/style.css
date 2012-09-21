@@ -1,0 +1,40 @@
+.sidebar-nav {
+    padding: 9px 0;
+}
+.inner_container{
+    background-color: white
+}
+.carousel-caption{
+    color:white
+}
+.courosal_image{
+    height:300px;
+    width:100%
+}
+.static_image{
+    height:150px;
+    width:100%
+}
+.row-fluid [class*="span4"]{margin-left:1.128% !important}
+.float_l{float:left}
+.float_r{float:right}
+.header{height:50px}
+.clear{clear:both}
+.mar_l_20{margin-left: 20px}
+.mar_r_20{margin-right: 20px}
+.mar_t_10{margin-top: 10px}
+.mar_lft{margin:20px 0px 0px 20px !important}
+.mar-b_40{margin-bottom: 40px}
+
+.bs-docs-sidenav {
+    background-color: #FFFFFF;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    padding: 0;
+    width: 220px;
+}
+
+.nav-list .active a{
+    background-color: #ccc !important ;
+    color: #555555
+}
